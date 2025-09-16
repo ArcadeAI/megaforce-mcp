@@ -1,6 +1,6 @@
 {
   "name": "MegaForce Starter",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "manifest_version": 3,
   "description": "Starter extension showing a hello message in the side panel.",
   "background": {

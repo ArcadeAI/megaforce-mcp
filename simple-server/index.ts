@@ -3,6 +3,7 @@ import { randomUUID } from 'node:crypto';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import { z } from 'zod';
+import { summarize } from './tools/summarize';
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const ROUTE = '/mcp';
@@ -14,7 +15,7 @@ function isInitializeRequest(body: unknown): boolean {
 function createSummarizerServer(): McpServer {
   const server = new McpServer({ name: 'summarizer-mcp', version: '0.1.0' }, { capabilities: { logging: {} } });
 
-  server.registerTool('/summarize', {
+  server.registerTool('summarize', {
     title: 'Summarize',
     description: 'Summarize the given text',
     inputSchema: {
@@ -22,8 +23,9 @@ function createSummarizerServer(): McpServer {
     }
   }, async ({ text }) => {
     console.log('Summarizing text:', text);
+    const summary = await summarize(text);
     return {
-      content: [{ type: 'text', text: 'this is a summary' }]
+      content: [{ type: 'text', text: summary }]
     };
   });
 

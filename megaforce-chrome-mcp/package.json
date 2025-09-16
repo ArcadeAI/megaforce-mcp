@@ -1,13 +1,22 @@
 {
   "name": "megaforce-starter",
+  "type": "module",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Starter Chrome extension with a simple side panel message.",
-  "main": "background.js",
+  "main": "background.ts",
   "scripts": {
-    "build": "node ./scripts/build.mjs"
+    "build": "bun run ./scripts/build.ts",
+    "dev": "bun --watch ./scripts/build.ts"
   },
   "keywords": [],
   "license": "Apache 2.0",
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.0",
+    "lucide": "^0.544.0"
+  }
 }

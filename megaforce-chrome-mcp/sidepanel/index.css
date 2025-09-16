@@ -89,3 +89,22 @@ textarea {
 [hidden] {
   display: none;
 }
+
+#connect-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.status-connected {
+  color: #16a34a;
+}
+
+.status-disconnected {
+  color: #bb4f4f;
+}
